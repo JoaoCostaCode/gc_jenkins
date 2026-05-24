@@ -4,7 +4,7 @@ public class App {
     
     // Método 1: Celsius para Fahrenheit
     public double celsiusParaFahrenheit(double celsius) {
-        return (celsius * 1.8) + 33;
+        return (celsius * 1.8) + 32
     }
 
     // Método 2: Fahrenheit para Celsius
