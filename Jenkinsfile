@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 stages {
 
     stage('Build em Container Docker') {
@@ -39,6 +38,6 @@ post {
         echo 'Falha no build!'
     }
 }
-```
+
 
 }
