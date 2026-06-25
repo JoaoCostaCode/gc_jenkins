@@ -5,13 +5,8 @@ stages {
 
     stage('Build em Container Docker') {
         steps {
-            bat '''
-            docker run --rm ^
-            -v "%cd%":/app ^
-            -w /app ^
-            maven:3.9-eclipse-temurin-17 ^
-            mvn clean compile
-            '''
+            bat 'docker --version'
+            bat 'docker ps'
         }
     }
 
