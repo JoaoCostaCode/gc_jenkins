@@ -5,21 +5,25 @@ stages {
 
     stage('Build em Container Docker') {
         steps {
-            script {
-                docker.image('maven:3.9-eclipse-temurin-17').inside {
-                    sh 'mvn clean compile'
-                }
-            }
+            bat '''
+            docker run --rm ^
+            -v "%cd%":/app ^
+            -w /app ^
+            maven:3.9-eclipse-temurin-17 ^
+            mvn clean compile
+            '''
         }
     }
 
     stage('Testes em Outro Container Docker') {
         steps {
-            script {
-                docker.image('maven:3.9-eclipse-temurin-17').inside {
-                    sh 'mvn test'
-                }
-            }
+            bat '''
+            docker run --rm ^
+            -v "%cd%":/app ^
+            -w /app ^
+            maven:3.9-eclipse-temurin-17 ^
+            mvn test
+            '''
         }
     }
 }
