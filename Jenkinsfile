@@ -1,6 +1,9 @@
 pipeline {
     agent {
         node {
+            // O parâmetro label é obrigatório quando usamos o bloco node no declarative pipeline
+            label '' 
+            
             // Força o Jenkins a rodar o projeto fora da pasta com caracteres especiais
             customWorkspace 'C:\\JenkinsWorkspace'
         }
