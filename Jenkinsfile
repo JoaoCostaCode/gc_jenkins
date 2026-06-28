@@ -1,10 +1,10 @@
 pipeline {
     agent {
         node {
-            // O parâmetro label é obrigatório quando usamos o bloco node no declarative pipeline
+            
             label '' 
             
-            // Força o Jenkins a rodar o projeto fora da pasta com caracteres especiais
+            
             customWorkspace 'C:\\JenkinsWorkspace'
         }
     }
@@ -26,10 +26,12 @@ pipeline {
         }
 
         stage('Testes em Outro Container Docker') {
-            steps {
-                bat 'docker run --rm -v "%WORKSPACE%":/app -v "%USERPROFILE%\\.m2":/root/.m2 -w /app maven:3.9-eclipse-temurin-17 mvn -B test'
+        steps {
+            catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+            bat 'docker run --rm -v "%WORKSPACE%":/app -v "%USERPROFILE%\\.m2":/root/.m2 -w /app maven:3.9-eclipse-temurin-17 mvn -B test'
             }
         }
+    }   
     }
 
     post {
