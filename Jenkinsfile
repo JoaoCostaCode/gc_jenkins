@@ -9,6 +9,10 @@ pipeline {
         }
     }
 
+    triggers {
+        cron('* * * * *') 
+    }
+
     stages {
         stage('Teste de Comunicação') {
             steps {

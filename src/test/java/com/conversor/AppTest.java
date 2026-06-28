@@ -8,7 +8,7 @@ public class AppTest {
 
     @Test
     public void testCelsiusParaFahrenheit() {
-        assertEquals(99.0, app.celsiusParaFahrenheit(0.0), 0.001);
+        assertEquals(32.0, app.celsiusParaFahrenheit(0.0), 0.001);
         assertEquals(212.0, app.celsiusParaFahrenheit(100.0), 0.001);
     }
 
